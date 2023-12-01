@@ -1,0 +1,88 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Aggiungi Libro</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Aggiungi Libro</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Dati libro</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="bookForm">
+          <div class="form-group">
+            <label>Titolo</label>
+            <input type="text" formControlName="title" class="form-control">
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+              <div *ngIf="title.errors.required">
+                Il titolo è obbligatorio
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Autore</label>
+            <input type="text" formControlName="author" class="form-control">
+            <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert alert-danger">
+              <div *ngIf="author.errors.required">
+                L'autore è obbligatorio
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>ISBN</label>
+            <input type="text" formControlName="ISBN" class="form-control">
+            <div *ngIf="ISBN.invalid && (ISBN.dirty || ISBN.touched)" class="alert alert-danger">
+              <div *ngIf="ISBN.errors.required">
+                Il codice ISBN è obbligatorio
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Data inserimento</label>
+            <input type="date" formControlName="dateAdd" class="form-control datetimepicker-input">
+            <div *ngIf="dateAdd.invalid && (dateAdd.dirty || dateAdd.touched)" class="alert alert-danger">
+              <div *ngIf="dateAdd.errors.required">
+                La data è obbligatoria
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Trama</label>
+            <textarea formControlName="plot" class="form-control datetimepicker-input"></textarea>
+            <div *ngIf="plot.invalid && (plot.dirty || plot.touched)" class="alert alert-danger">
+              <div *ngIf="plot.errors.required">
+                La trama è obbligatoria
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <div class="card-tools">
+          <button class="btn btn-success float-right" (click)="saveBook()"><i class="fa fa-save"></i></button>
+        </div>
+      </div>
+      <!-- /.card-footer-->
+    </div>
+  </div>
+  {{bookForm.value|json}}
+  <!-- /.card -->
+</section>
+<!-- /.content -->
